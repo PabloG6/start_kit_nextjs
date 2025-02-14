@@ -14,6 +14,7 @@ const authSchema = z.object({
 });
 
 type Props = {
+  children: React.ReactNode;
   authType: "signup" | "login";
   submit: (a: z.infer<typeof authSchema>) => Promise<void>;
 };
@@ -24,6 +25,7 @@ const gotoLogin = "Already have an account?";
 export function AuthForm({
   className,
   submit,
+  children,
   authType,
   ...props
 }: React.ComponentPropsWithoutRef<"div"> & Props) {
@@ -111,10 +113,7 @@ export function AuthForm({
                   );
                 }}
               ></FormField>
-              <Button type="submit" className="w-full">
-                {authType == "signup" && "Sign Up"}
-                {authType == "login" && "Sign In"}
-              </Button>
+              {children}
             </div>
             <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
               <span className="relative z-10 bg-background px-2 text-muted-foreground">

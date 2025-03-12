@@ -30,7 +30,7 @@ export default function LoginPage() {
                   toast({
                     title: "An error occurred",
                     description: ctx.error.message,
-                    variant: "destructive",
+                    variant: "destructive",:e
                   });
                   setLoading(false);
                 },
